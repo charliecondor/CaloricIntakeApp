@@ -11,6 +11,7 @@ namespace CaloricIntakeApp
 {
     internal static class Program
     {
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -30,6 +31,8 @@ namespace CaloricIntakeApp
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("Test");            
+
             var mealJSON = new MealJSON()
             {
                 Date = DateTime.Now,                
@@ -41,7 +44,13 @@ namespace CaloricIntakeApp
         
             string fileName = "Meals.json";
             string jsonString = JsonSerializer.Serialize(mealJSON);
-            // string jsonString = JsonSerializer.Deserialize(mealJSON, null);
+
+            Console.WriteLine(mealJSON.Date.ToShortDateString() + "\n" + "Qty\t\tUnit\t\tDesc\tCal");
+            foreach(MealItemJSON item in mealJSON.MealItems)
+            {
+                Console.WriteLine(Convert.ToInt32(item.Quantity) + "\t\t" + item.MeasurementUnit + "\t\t" + item.Description + "\t" + item.Calories);
+            }
+            
             File.WriteAllText(fileName, jsonString);
                      
             Application.EnableVisualStyles();
