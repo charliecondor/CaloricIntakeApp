@@ -12,10 +12,15 @@ namespace CaloricIntakeApp
     {                
         [STAThread]
         static void Main()
-        {      
+        {
+            MealHistory mealHistory = new MealHistory();
+            mealHistory = mealHistory.LoadJSON();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainMenu());
+
+            mealHistory.SaveJSON();
         }
     }
 }
