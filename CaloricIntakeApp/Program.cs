@@ -10,49 +10,10 @@ using System.Runtime.CompilerServices;
 namespace CaloricIntakeApp
 {
     internal static class Program
-    {
-        
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        public class MealItemJSON
-        {
-            public string Quantity { get; set; }
-            public string MeasurementUnit { get; set; }
-            public string Description { get; set; }
-            public int Calories { get; set; }
-        }
-        public class MealJSON
-        {
-            public DateTime Date { get; set; }
-            public List<MealItemJSON> MealItems { get; set; }
-            public int TotalCalories { get; set; }
-        }
+    {                
         [STAThread]
         static void Main()
-        {
-            Console.WriteLine("Test");            
-
-            var mealJSON = new MealJSON()
-            {
-                Date = DateTime.Now,                
-                TotalCalories = 0
-            };
-
-            mealJSON.MealItems = new List<MealItemJSON> { new MealItemJSON { Quantity = "1", MeasurementUnit = "cup", Description = "corn", Calories = 80 } };
-            mealJSON.MealItems.Add(new MealItemJSON { Quantity = "2", MeasurementUnit = "tbsp", Description = "mayo", Calories = 100 });
-        
-            string fileName = "Meals.json";
-            string jsonString = JsonSerializer.Serialize(mealJSON);
-
-            Console.WriteLine(mealJSON.Date.ToShortDateString() + "\n" + "Qty\t\tUnit\t\tDesc\tCal");
-            foreach(MealItemJSON item in mealJSON.MealItems)
-            {
-                Console.WriteLine(Convert.ToInt32(item.Quantity) + "\t\t" + item.MeasurementUnit + "\t\t" + item.Description + "\t" + item.Calories);
-            }
-            
-            File.WriteAllText(fileName, jsonString);
-                     
+        {      
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
