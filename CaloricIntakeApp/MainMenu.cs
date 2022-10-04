@@ -14,7 +14,13 @@ namespace CaloricIntakeApp
     {
         public MainMenu()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
+
+        private void btnViewHistory_MouseClick(object sender, MouseEventArgs e)
+        {
+            Form viewHistory = new ViewHistory();
+            viewHistory.Show();            
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CaloricIntakeApp
 {
-    partial class MainMenu
+    partial class ViewHistory
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnViewHistory = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnViewHistory
+            // dataGridView1
             // 
-            this.btnViewHistory.Location = new System.Drawing.Point(23, 78);
-            this.btnViewHistory.Name = "btnViewHistory";
-            this.btnViewHistory.Size = new System.Drawing.Size(82, 28);
-            this.btnViewHistory.TabIndex = 0;
-            this.btnViewHistory.Text = "View History";
-            this.btnViewHistory.UseVisualStyleBackColor = true;
-            this.btnViewHistory.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnViewHistory_MouseClick);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(25, 25);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(604, 360);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // MainMenu
+            // ViewHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnViewHistory);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "MainMenu";
-            this.Text = "Caloric Intake";
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "ViewHistory";
+            this.Text = "ViewHistory";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewHistory_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnViewHistory;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
-
