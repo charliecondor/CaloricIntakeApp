@@ -17,12 +17,10 @@ namespace CaloricIntakeApp
             InitializeComponent();
             MealHistory mealHistory = new MealHistory();
             mealHistory = mealHistory.LoadJSON();
-            dataGridView1.DataSource = mealHistory;
-        }
-
-        private void ViewHistory_FormClosing(object sender, FormClosingEventArgs e)
-        {
             
+            dGridViewHistory.DataSource = mealHistory;
+
+            mealHistory.SaveJSON();
         }
     }
 }
