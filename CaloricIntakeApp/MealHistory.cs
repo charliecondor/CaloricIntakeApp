@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CaloricIntakeApp
 {
@@ -17,9 +18,9 @@ namespace CaloricIntakeApp
         }
         public MealHistory LoadJSON()
         {
-            //var options = new JsonSerializerOptions { IncludeFields = true };  // Include fields for serializing objects with objects            
+            //var options = new JsonSerializerOptions { WriteIndented = true };  // Include fields for serializing objects with objects            
             //return File.Exists(fileJSON) ? JsonSerializer.Deserialize<MealHistory>(File.ReadAllText(fileJSON), options) : null;
-            return File.Exists(fileJSON) ? JsonSerializer.Deserialize<MealHistory>(File.ReadAllText(fileJSON)) : null;
+            return File.Exists(fileJSON) ? JsonSerializer.Deserialize<MealHistory>(File.ReadAllText(fileJSON)) : null;            
         }
         public void SaveJSON()
         {
@@ -28,33 +29,35 @@ namespace CaloricIntakeApp
             string mealJSON = JsonSerializer.Serialize(this);
             File.WriteAllText(fileJSON, mealJSON);
         }
-        public List<DailySummary> GenerateSummary()
+        public MealSummary GenerateSummary()
         {
-            List<DailySummary> dailySummary = new List<DailySummary>();
+            MealSummary dailySummary = new MealSummary();
 
             foreach (Meal meal in meals)
             {
-                if (!dailySummary.Exists(x => x.Date == meal.Date))
+                if (!dailySummary.meal_totals.Exists(x => x.date == meal.Date))
                 {
-                    dailySummary.Add(new DailySummary(meal.Date, 0));
+                    dailySummary.meal_totals.Add(new MealDayTotal(meal.Date, 0));
                 }
             }
 
-            dailySummary.Sort((x, y) => x.Date.CompareTo(y.Date));
+            dailySummary.meal_totals.Sort((x, y) => x.date.CompareTo(y.date));
 
-            foreach (DailySummary day in dailySummary)
+            foreach (MealDayTotal day in dailySummary.meal_totals)
             {
                 foreach (Meal meal in meals)
                 {
-                    if (day.Date == meal.Date)
+                    if (day.date == meal.Date)
                     {
                         foreach (MealItems mealitem in meal.mealitems)
                         {
-                            day.TotalCalories += mealitem.Calories;
+                            day.total_calories += mealitem.Calories;
                         }
                     }
                 }
             }
+
+            dailySummary.meal_totals.Reverse();
 
             return dailySummary;
         }

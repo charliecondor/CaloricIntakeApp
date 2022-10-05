@@ -18,6 +18,11 @@ namespace CaloricIntakeApp
             MealHistory mealHistory = new MealHistory();
             mealHistory = mealHistory.LoadJSON();
             
+            MealSummary mealSummary = mealHistory.GenerateSummary();
+            mealSummary.CalculateSummaryValues();
+
+            lblLTtotalvalue.Text = Convert.ToString(mealSummary.getLifetimeTotal());
+
             dGridViewHistory.DataSource = mealHistory;
 
             mealHistory.SaveJSON();
