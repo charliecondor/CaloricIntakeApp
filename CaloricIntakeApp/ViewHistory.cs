@@ -30,10 +30,18 @@ namespace CaloricIntakeApp
             lblTDaveragevalue.Text = String.Format("{0:F}", mealSummary.getTendayAverage());
             lblTDhighvalue.Text = Convert.ToString(mealSummary.getTendayHigh()) + " (" + Convert.ToString(mealSummary.getTendayHighDate()) + ")";
             lblTDlowvalue.Text = Convert.ToString(mealSummary.getTendayLow()) + " (" + Convert.ToString(mealSummary.getTendayLowDate()) + ")";
-
-            dGridViewHistory.DataSource = mealHistory;
+            
+            foreach (MealDayTotal meal in mealSummary.meal_totals)
+            {
+                dGridViewHistory.Rows.Add(meal.date, meal.total_calories);
+            }
 
             mealHistory.SaveJSON();
+        }
+
+        private void dGridViewHistory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }
