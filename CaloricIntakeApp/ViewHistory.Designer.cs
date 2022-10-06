@@ -57,9 +57,9 @@
             this.dGridViewHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Date,
             this.Calories});
-            this.dGridViewHistory.Location = new System.Drawing.Point(259, 53);
+            this.dGridViewHistory.Location = new System.Drawing.Point(318, 12);
             this.dGridViewHistory.Name = "dGridViewHistory";
-            this.dGridViewHistory.Size = new System.Drawing.Size(247, 300);
+            this.dGridViewHistory.Size = new System.Drawing.Size(247, 252);
             this.dGridViewHistory.TabIndex = 0;
             // 
             // Date
@@ -250,7 +250,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 379);
+            this.ClientSize = new System.Drawing.Size(579, 278);
             this.Controls.Add(this.lblTDlowvalue);
             this.Controls.Add(this.lblTDhighvalue);
             this.Controls.Add(this.lblTDaveragevalue);

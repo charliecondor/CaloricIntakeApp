@@ -8,13 +8,13 @@ namespace CaloricIntakeApp
         public List<MealDayTotal> meal_totals = new List<MealDayTotal>();
 
         private int lifetime_total;
-        private int lifetime_average;
+        private double lifetime_average;
         private int lifetime_high;
         private int lifetime_low = 10000;
         private string lifetime_highdate;
         private string lifetime_lowdate;
         private int tenday_total;
-        private int tenday_average;
+        private double tenday_average;
         private int tenday_high;
         private int tenday_low = 10000;
         private string tenday_highdate;
@@ -36,13 +36,31 @@ namespace CaloricIntakeApp
                     lifetime_lowdate = day.date;
                 }
             }
-            lifetime_average = lifetime_total / meal_totals.Count;
+            lifetime_average = (double)lifetime_total / meal_totals.Count;
+
+            int last_ten = 1;
+            while (last_ten < 11)
+            {
+                tenday_total += meal_totals[last_ten].total_calories;
+                if (tenday_high < meal_totals[last_ten].total_calories)
+                {
+                    tenday_high = meal_totals[last_ten].total_calories;
+                    tenday_highdate = meal_totals[last_ten].date;
+                }
+                if (tenday_low > meal_totals[last_ten].total_calories)
+                {
+                    tenday_low = meal_totals[last_ten].total_calories;
+                    tenday_lowdate = meal_totals[last_ten].date;
+                }
+                last_ten++;
+            }
+            tenday_average = (double)tenday_total / 10;
         }
         public int getLifetimeTotal()
         {
             return lifetime_total;
         }
-        public int getLifetimeAverage()
+        public double getLifetimeAverage()
         {
             return lifetime_average;
         }
@@ -66,7 +84,7 @@ namespace CaloricIntakeApp
         {
             return tenday_total;
         }
-        public int getTendayAverage()
+        public double getTendayAverage()
         {
             return tenday_average;
         }

@@ -18,15 +18,13 @@ namespace CaloricIntakeApp
         }
         public MealHistory LoadJSON()
         {
-            //var options = new JsonSerializerOptions { WriteIndented = true };  // Include fields for serializing objects with objects            
-            //return File.Exists(fileJSON) ? JsonSerializer.Deserialize<MealHistory>(File.ReadAllText(fileJSON), options) : null;
-            return File.Exists(fileJSON) ? JsonSerializer.Deserialize<MealHistory>(File.ReadAllText(fileJSON)) : null;            
+            var options = new JsonSerializerOptions { IncludeFields = true };  // Include fields for serializing objects with objects
+            return File.Exists(fileJSON) ? JsonSerializer.Deserialize<MealHistory>(File.ReadAllText(fileJSON), options) : null;
         }
         public void SaveJSON()
         {
-            //var options = new JsonSerializerOptions { IncludeFields = true };  // Include fields for serializing objects with objects
-            //string mealJSON = JsonSerializer.Serialize(this, options);
-            string mealJSON = JsonSerializer.Serialize(this);
+            var options = new JsonSerializerOptions { IncludeFields = true };  // Include fields for serializing objects with objects
+            string mealJSON = JsonSerializer.Serialize(this, options);
             File.WriteAllText(fileJSON, mealJSON);
         }
         public MealSummary GenerateSummary()
