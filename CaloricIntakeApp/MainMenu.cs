@@ -21,8 +21,9 @@ namespace CaloricIntakeApp
 
         private void btnViewHistory_MouseClick(object sender, MouseEventArgs e)
         {
-            Form viewHistory = new ViewHistory();
-            viewHistory.Show();            
+            Form viewHistory = new ViewHistory(this);
+            this.Hide();
+            viewHistory.Show();
         }
     }
 }

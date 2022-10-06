@@ -281,6 +281,7 @@
             this.Name = "ViewHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewHistory";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewHistory_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dGridViewHistory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

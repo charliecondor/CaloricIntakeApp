@@ -12,8 +12,10 @@ namespace CaloricIntakeApp
 {
     public partial class ViewHistory : Form
     {
-        public ViewHistory()
+        private Form parent_form;
+        public ViewHistory(Form main_form)
         {
+            parent_form = main_form;
             InitializeComponent();
             MealHistory mealHistory = new MealHistory();
             mealHistory = mealHistory.LoadJSON();
@@ -41,7 +43,14 @@ namespace CaloricIntakeApp
 
         private void dGridViewHistory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            MessageBox.Show(e.RowIndex.ToString(), "Click", MessageBoxButtons.OK);
             
+            
+        }
+
+        private void ViewHistory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            parent_form.Show();
         }
     }
 }
