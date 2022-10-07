@@ -15,6 +15,8 @@ namespace CaloricIntakeApp
         private Form parent_form;
         private MealHistory mealHistory = new MealHistory();
         private MealSummary mealSummary = new MealSummary();
+        private string selected_date;
+        private string selected_time;
         public ViewHistory(Form main_form)
         {
             parent_form = main_form;
@@ -50,21 +52,55 @@ namespace CaloricIntakeApp
         }
         private void dGridViewHistory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dGVMealTime.Rows.Clear();  // Clear rows for previously selected date
-            string selected_date = dGVMealSummary.Rows[e.RowIndex].Cells[0].Value.ToString();  // Retrieves the date of the selected row            
-            //MessageBox.Show(e.RowIndex.ToString() + " | " + selected_date, "Click", MessageBoxButtons.OK);
-
-            foreach (Meal meal in mealHistory.meals)  // Lists all meal times for a selected meal date
+            try
             {
-                if (meal.Date == selected_date)
+                dGVMealTime.Rows.Clear();  // Clear rows for previously selected date
+                dGVMealList.Rows.Clear();
+                selected_date = dGVMealSummary.Rows[e.RowIndex].Cells[0].Value.ToString();  // Retrieves the date of the selected row            
+                //MessageBox.Show(e.RowIndex.ToString() + " | " + selected_date, "Click", MessageBoxButtons.OK);
+
+                foreach (Meal meal in mealHistory.meals)  // Lists all meal times for a selected meal date
                 {
-                    int total_calories = 0;                    
-                    foreach (MealItems item in meal.mealitems)
+                    if (meal.Date == selected_date)
                     {
-                        total_calories += item.Calories;
+                        int total_calories = 0;
+                        foreach (MealItems item in meal.mealitems)
+                        {
+                            total_calories += item.Calories;
+                        }
+                        dGVMealTime.Rows.Add(meal.Time, total_calories.ToString());
                     }
-                    dGVMealTime.Rows.Add(meal.Time, total_calories.ToString());
                 }
+            }
+            catch
+            {
+                return;
+            }
+        }
+        private void dGVMealTime_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dGVMealList.Rows.Clear();  // Clear rows for previously selected time
+                selected_time = dGVMealTime.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                foreach (Meal meal in mealHistory.meals)
+                {
+                    if (meal.Date == selected_date)
+                    {
+                        if (meal.Time == selected_time)
+                        {
+                            foreach (MealItems item in meal.mealitems)
+                            {
+                                dGVMealList.Rows.Add(item.Quantity, item.UnitMeasurement, item.Description, item.Calories);
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return;
             }
         }
         private void ViewHistory_FormClosed(object sender, FormClosedEventArgs e)
