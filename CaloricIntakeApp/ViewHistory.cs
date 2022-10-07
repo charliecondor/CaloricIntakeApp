@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CaloricIntakeApp
@@ -17,6 +10,7 @@ namespace CaloricIntakeApp
         private MealSummary mealSummary = new MealSummary();
         private string selected_date;
         private string selected_time;
+        private DataGridViewCellEventArgs meallist_cell;
         public ViewHistory(Form main_form)
         {
             parent_form = main_form;
@@ -56,7 +50,9 @@ namespace CaloricIntakeApp
             {
                 dGVMealTime.Rows.Clear();  // Clear rows for previously selected date
                 dGVMealList.Rows.Clear();
-                selected_date = dGVMealSummary.Rows[e.RowIndex].Cells[0].Value.ToString();  // Retrieves the date of the selected row            
+                selected_date = dGVMealSummary.Rows[e.RowIndex].Cells[0].Value.ToString();  // Retrieves the date of the selected row
+                selected_time = null;
+                meallist_cell = null;
                 //MessageBox.Show(e.RowIndex.ToString() + " | " + selected_date, "Click", MessageBoxButtons.OK);
 
                 foreach (Meal meal in mealHistory.meals)  // Lists all meal times for a selected meal date
@@ -83,6 +79,7 @@ namespace CaloricIntakeApp
             {
                 dGVMealList.Rows.Clear();  // Clear rows for previously selected time
                 selected_time = dGVMealTime.Rows[e.RowIndex].Cells[0].Value.ToString();
+                meallist_cell = null;
 
                 foreach (Meal meal in mealHistory.meals)
                 {
@@ -94,6 +91,22 @@ namespace CaloricIntakeApp
                             }
                     }
                 }
+            }
+            catch
+            {
+                return;
+            }
+        }
+        private void dGVMealList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.meallist_cell = e;
+        }
+        private void btnEditMealList_Click(object sender, EventArgs e)
+        {
+            if (selected_date == null || selected_time == null || meallist_cell == null) return;
+            try
+            {
+                MessageBox.Show("Date: " + selected_date + "| Time: " + selected_time + "| Cell: " + meallist_cell.ColumnIndex + " | " + meallist_cell.RowIndex, "Info", MessageBoxButtons.OK);
             }
             catch
             {
