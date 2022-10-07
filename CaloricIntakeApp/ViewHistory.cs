@@ -66,8 +66,6 @@ namespace CaloricIntakeApp
                     dGVMealTime.Rows.Add(meal.Time, total_calories.ToString());
                 }
             }
-
-            //mealHistory.meals[e.RowIndex].mealitems
         }
         private void ViewHistory_FormClosed(object sender, FormClosedEventArgs e)
         {

@@ -51,8 +51,17 @@
             this.dGVMealTime = new System.Windows.Forms.DataGridView();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MealCals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblDailySummary = new System.Windows.Forms.Label();
+            this.lblMealSummary = new System.Windows.Forms.Label();
+            this.lblMealList = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealSummary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dGVMealSummary
@@ -66,8 +75,9 @@
             this.dGVMealSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Date,
             this.Calories});
-            this.dGVMealSummary.Location = new System.Drawing.Point(318, 12);
+            this.dGVMealSummary.Location = new System.Drawing.Point(318, 53);
             this.dGVMealSummary.Name = "dGVMealSummary";
+            this.dGVMealSummary.ReadOnly = true;
             this.dGVMealSummary.Size = new System.Drawing.Size(265, 252);
             this.dGVMealSummary.TabIndex = 0;
             this.dGVMealSummary.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridViewHistory_CellClick);
@@ -76,21 +86,23 @@
             // 
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // Calories
             // 
             this.Calories.HeaderText = "Calories";
             this.Calories.Name = "Calories";
+            this.Calories.ReadOnly = true;
             // 
             // lblSummary
             // 
             this.lblSummary.AutoSize = true;
             this.lblSummary.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSummary.Location = new System.Drawing.Point(67, 9);
+            this.lblSummary.Location = new System.Drawing.Point(56, 9);
             this.lblSummary.Name = "lblSummary";
-            this.lblSummary.Size = new System.Drawing.Size(91, 24);
+            this.lblSummary.Size = new System.Drawing.Size(161, 24);
             this.lblSummary.TabIndex = 1;
-            this.lblSummary.Text = "Summary";
+            this.lblSummary.Text = "Overall Summary";
             // 
             // lblLTtotal
             // 
@@ -267,8 +279,9 @@
             this.dGVMealTime.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Time,
             this.MealCals});
-            this.dGVMealTime.Location = new System.Drawing.Point(589, 12);
+            this.dGVMealTime.Location = new System.Drawing.Point(589, 53);
             this.dGVMealTime.Name = "dGVMealTime";
+            this.dGVMealTime.ReadOnly = true;
             this.dGVMealTime.Size = new System.Drawing.Size(245, 175);
             this.dGVMealTime.TabIndex = 18;
             // 
@@ -284,11 +297,85 @@
             this.MealCals.Name = "MealCals";
             this.MealCals.ReadOnly = true;
             // 
+            // lblDailySummary
+            // 
+            this.lblDailySummary.AutoSize = true;
+            this.lblDailySummary.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDailySummary.Location = new System.Drawing.Point(373, 9);
+            this.lblDailySummary.Name = "lblDailySummary";
+            this.lblDailySummary.Size = new System.Drawing.Size(141, 24);
+            this.lblDailySummary.TabIndex = 19;
+            this.lblDailySummary.Text = "Daily Summary";
+            // 
+            // lblMealSummary
+            // 
+            this.lblMealSummary.AutoSize = true;
+            this.lblMealSummary.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMealSummary.Location = new System.Drawing.Point(639, 9);
+            this.lblMealSummary.Name = "lblMealSummary";
+            this.lblMealSummary.Size = new System.Drawing.Size(138, 24);
+            this.lblMealSummary.TabIndex = 20;
+            this.lblMealSummary.Text = "Meal Summary";
+            // 
+            // lblMealList
+            // 
+            this.lblMealList.AutoSize = true;
+            this.lblMealList.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMealList.Location = new System.Drawing.Point(402, 317);
+            this.lblMealList.Name = "lblMealList";
+            this.lblMealList.Size = new System.Drawing.Size(90, 24);
+            this.lblMealList.TabIndex = 21;
+            this.lblMealList.Text = "Meal List";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Quantity,
+            this.Unit,
+            this.Description,
+            this.ItemCals});
+            this.dataGridView1.Location = new System.Drawing.Point(321, 355);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(465, 162);
+            this.dataGridView1.TabIndex = 22;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // ItemCals
+            // 
+            this.ItemCals.HeaderText = "Calories";
+            this.ItemCals.Name = "ItemCals";
+            this.ItemCals.ReadOnly = true;
+            // 
             // ViewHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(849, 278);
+            this.ClientSize = new System.Drawing.Size(861, 529);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblMealList);
+            this.Controls.Add(this.lblMealSummary);
+            this.Controls.Add(this.lblDailySummary);
             this.Controls.Add(this.dGVMealTime);
             this.Controls.Add(this.lblTDlowvalue);
             this.Controls.Add(this.lblTDhighvalue);
@@ -317,6 +404,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewHistory_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealSummary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,5 +435,13 @@
         private System.Windows.Forms.DataGridView dGVMealTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.DataGridViewTextBoxColumn MealCals;
+        private System.Windows.Forms.Label lblDailySummary;
+        private System.Windows.Forms.Label lblMealSummary;
+        private System.Windows.Forms.Label lblMealList;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCals;
     }
 }
