@@ -45,12 +45,29 @@ namespace CaloricIntakeApp
         {
             foreach (MealDayTotal meal in mealSummary.meal_totals)
             {
-                dGridViewHistory.Rows.Add(meal.date, meal.total_calories);
+                dGVMealSummary.Rows.Add(meal.date, meal.total_calories);
             }
         }
         private void dGridViewHistory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(e.RowIndex.ToString(), "Click", MessageBoxButtons.OK);
+            dGVMealTime.Rows.Clear();  // Clear rows for previously selected date
+            string selected_date = dGVMealSummary.Rows[e.RowIndex].Cells[0].Value.ToString();  // Retrieves the date of the selected row            
+            //MessageBox.Show(e.RowIndex.ToString() + " | " + selected_date, "Click", MessageBoxButtons.OK);
+
+            foreach (Meal meal in mealHistory.meals)  // Lists all meal times for a selected meal date
+            {
+                if (meal.Date == selected_date)
+                {
+                    int total_calories = 0;                    
+                    foreach (MealItems item in meal.mealitems)
+                    {
+                        total_calories += item.Calories;
+                    }
+                    dGVMealTime.Rows.Add(meal.Time, total_calories.ToString());
+                }
+            }
+
+            //mealHistory.meals[e.RowIndex].mealitems
         }
         private void ViewHistory_FormClosed(object sender, FormClosedEventArgs e)
         {
