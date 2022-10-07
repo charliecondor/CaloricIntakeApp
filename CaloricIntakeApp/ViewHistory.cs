@@ -86,15 +86,12 @@ namespace CaloricIntakeApp
 
                 foreach (Meal meal in mealHistory.meals)
                 {
-                    if (meal.Date == selected_date)
+                    if (meal.Date == selected_date && meal.Time == selected_time)
                     {
-                        if (meal.Time == selected_time)
-                        {
                             foreach (MealItems item in meal.mealitems)
                             {
                                 dGVMealList.Rows.Add(item.Quantity, item.UnitMeasurement, item.Description, item.Calories);
                             }
-                        }
                     }
                 }
             }
