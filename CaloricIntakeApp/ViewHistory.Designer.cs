@@ -55,11 +55,12 @@
             this.lblMealSummary = new System.Windows.Forms.Label();
             this.lblMealList = new System.Windows.Forms.Label();
             this.dGVMealList = new System.Windows.Forms.DataGridView();
-            this.btnEditMealList = new System.Windows.Forms.Button();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditMealList = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealSummary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealList)).BeginInit();
@@ -352,18 +353,6 @@
             this.dGVMealList.TabIndex = 22;
             this.dGVMealList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVMealList_CellClick);
             // 
-            // btnEditMealList
-            // 
-            this.btnEditMealList.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEditMealList.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditMealList.Location = new System.Drawing.Point(741, 346);
-            this.btnEditMealList.Name = "btnEditMealList";
-            this.btnEditMealList.Size = new System.Drawing.Size(82, 68);
-            this.btnEditMealList.TabIndex = 23;
-            this.btnEditMealList.Text = "Edit\r\nItem";
-            this.btnEditMealList.UseVisualStyleBackColor = false;
-            this.btnEditMealList.Click += new System.EventHandler(this.btnEditMealList_Click);
-            // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
@@ -392,11 +381,36 @@
             this.ItemCals.ReadOnly = true;
             this.ItemCals.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // btnEditMealList
+            // 
+            this.btnEditMealList.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditMealList.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditMealList.Location = new System.Drawing.Point(741, 252);
+            this.btnEditMealList.Name = "btnEditMealList";
+            this.btnEditMealList.Size = new System.Drawing.Size(82, 75);
+            this.btnEditMealList.TabIndex = 23;
+            this.btnEditMealList.Text = "Edit\r\nItem";
+            this.btnEditMealList.UseVisualStyleBackColor = false;
+            this.btnEditMealList.Click += new System.EventHandler(this.btnEditMealList_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
+            this.btnClose.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(741, 339);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(82, 75);
+            this.btnClose.TabIndex = 24;
+            this.btnClose.Text = "Exit";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // ViewHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 426);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEditMealList);
             this.Controls.Add(this.dGVMealList);
             this.Controls.Add(this.lblMealList);
@@ -470,5 +484,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCals;
+        private System.Windows.Forms.Button btnClose;
     }
 }

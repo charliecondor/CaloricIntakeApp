@@ -118,5 +118,13 @@ namespace CaloricIntakeApp
             mealHistory.SaveJSON();
             parent_form.Show();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            mealHistory.SaveJSON();
+            parent_form.Show();
+            this.Close();
+            this.Dispose();
+        }
     }
 }
