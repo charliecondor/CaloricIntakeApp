@@ -441,7 +441,7 @@
             this.MinimizeBox = false;
             this.Name = "ViewHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ViewHistory";
+            this.Text = "Caloric Intake v0.5 - View History";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewHistory_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealSummary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dGVMealTime)).EndInit();
