@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMeal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMeal.Designer.cs">
+      <DependentUpon>AddMeal.cs</DependentUpon>
+    </Compile>
     <Compile Include="MealDayTotal.cs" />
     <Compile Include="MealSummary.cs" />
     <Compile Include="MainMenu.cs">
@@ -95,6 +101,9 @@
     <Compile Include="ViewHistory.Designer.cs">
       <DependentUpon>ViewHistory.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddMeal.resx">
+      <DependentUpon>AddMeal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
