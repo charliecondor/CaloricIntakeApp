@@ -34,7 +34,9 @@ namespace CaloricIntakeApp
 
         private void btnAddMeal_Click(object sender, EventArgs e)
         {
-
+            Form addMeal = new AddMeal(this);
+            this.Hide();
+            addMeal.Show();
         }
     }
 }
