@@ -25,5 +25,16 @@ namespace CaloricIntakeApp
             this.Hide();
             viewHistory.Show();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.Dispose();
+        }
+
+        private void btnAddMeal_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
